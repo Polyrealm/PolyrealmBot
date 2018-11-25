@@ -1,15 +1,27 @@
 {
-  "command_list": {
-    "name": "Test Command",
-    "call": "test_command",
-    "type": "custom",
-    "script": [
-      {
-        "cmd": "echo",
-        "value": "test"
-      }
-    ]
-  },
+  "command_list": [
+    {
+      "name": "Test Command",
+      "call": "test_command",
+      "type": "custom",
+      "script": [
+        {
+          "cmd": "echo",
+          "value": "test"
+        }
+      ]
+    },
 
-  "temp_cmd_list": {}
+    {
+      "name": "Test Command2",
+      "call": "test_command2",
+      "type": "custom",
+      "script": [
+        {
+          "cmd": "echo",
+          "value": "test2"
+        }
+      ]
+    }
+  ]
 }

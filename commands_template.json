@@ -1,0 +1,33 @@
+{
+  "command_list": [
+    {
+      "name": "Test Command",
+      "call": "test_command",
+      "type": "custom",
+      "script": [
+        {
+          "cmd": "echo",
+          "value": "test"
+        }
+      ]
+    },
+
+    {
+      "name": "Test Parent Command",
+      "call": "test_parent_command",
+      "type": "parent",
+      "subcommands": [
+        PUT MORE COMMANDS HERE
+      ],
+      "fallback": {
+        "type": "custom",
+        "script": [
+          {
+            "cmd": "echo",
+            "value": "test"
+          }
+        ]
+      }
+    }
+  ]
+}
