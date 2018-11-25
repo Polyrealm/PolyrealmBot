@@ -107,6 +107,7 @@ fn processJsonScript(scr: &json::JsonValue) -> String {
         if cmd == "echo" {
             let value = script[i]["value"].take_string().expect("110:Should be a string"); //TODO: Make it so that you can do $variable to print out variables
             response.push_str(&value);
+            response.push_str("[..]"); //Split between messages looks like this
         }
     }
 
@@ -138,13 +139,15 @@ fn jsonCommand(context: &mut Context, message: &Message, args: Args) -> Result<(
     println!("{}", cmd);
 
     if jsondata.has_key(&(cmd.clone())[..]) {
-        println!("yayeet");
         let t = jsondata[cmd.clone()]["type"].take_string().expect("138:Should be a string");
         if t == "custom" {
             let response = processJsonScript(&jsondata[cmd.clone()]["script"]);
-            println!("{}", response);
-            if let Err(why) = message.channel_id.say(&response) {
-                println!("ERROR: {}", why);
+            let response_split = response.split("[..]");
+            let response_vec: Vec<&str> = response_split.collect();
+            for i in 0..response_vec.len() {
+                if let Err(why) = message.channel_id.say(&response_vec[i]) {
+                    println!("ERROR: {}", why);
+                }
             }
         }
     }

@@ -8,18 +8,10 @@
         {
           "cmd": "echo",
           "value": "test"
-        }
-      ]
-    },
-
-    {
-      "name": "Test Command2",
-      "call": "test_command2",
-      "type": "custom",
-      "script": [
+        },
         {
           "cmd": "echo",
-          "value": "test2"
+          "value": "look it can have multiple commands"
         }
       ]
     }
